@@ -41,7 +41,7 @@ load(url("https://github.com/ASDS-TCD/StatsII_Spring2023/blob/main/datasets/clim
 
 
 # changing factors to normal factors rather than ordered factors
-climateSupport$sanctions <- factor(climateSupport$sanctions, ordered = FALSE)
+climateSupport$sanctions <- relevel(factor(climateSupport$sanctions, ordered = FALSE), ref = "5%")
 climateSupport$countries <- factor(climateSupport$countries, ordered = FALSE)
 
 # Regression
@@ -51,6 +51,7 @@ anova(reg1_null, reg1, test="LRT")
 
 #tables
 summary(reg1)
+
 stargazer(reg1, type = "latex", title = "Difflog and Presvote")
 
 #Creating predicted data table
@@ -79,7 +80,9 @@ anova(reg2, reg1, test = "LRT")
 
 #misc - going to show in class
 -.27266 + .64835 + .19186
-climateSupport[9,2:3]
+climateSupport[25,2:3]
 predict(reg1, newdata = climateSupport[9,2:3], type = "response")
 pl
 ?predict()
+
+# relevelling - reference point

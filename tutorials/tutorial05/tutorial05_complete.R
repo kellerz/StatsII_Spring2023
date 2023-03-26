@@ -6,6 +6,8 @@ library(MASS)
 library(nnet)
 library(ggplot2)
 
+
+workingMoms <- read.table("http://statmath.wu.ac.at/courses/StatsWithR/WorkingMoms.txt", header=T)
 # EDA
 summary(workingMoms)
 ftable(xtabs(~ gender + year + attitude, data = workingMoms))
@@ -38,6 +40,7 @@ ggplot(workingMoms, aes(attitude, prestige)) +
 
 ord.log <- polr(attitude ~ ., data = workingMoms, Hess = TRUE)
 summary(ord.log)
+exp(cbind(OR = coef(ord.log), confint(ord.log)))
 
 # Calculate a p value
 ctable <- coef(summary(ord.log))
