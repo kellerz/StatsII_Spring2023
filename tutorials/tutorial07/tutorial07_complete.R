@@ -16,6 +16,7 @@ autoplot(km)
 km_socBranch <- survfit(child_surv ~ socBranch, data = child)
 autoplot(km_socBranch)
 
+# ] = hard border
 # b)
 cox <- coxph(child_surv ~ sex + socBranch, data = child)
 summary(cox)
@@ -63,3 +64,5 @@ cox.int <- coxph(child_surv ~ sex * socBranch, data = child)
 summary(cox.int)
 drop1(cox.int, test = "Chisq")
 stargazer(cox.int, type = "text")
+
+#data well adjusted by additive model

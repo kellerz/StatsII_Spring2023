@@ -86,6 +86,7 @@ stargazer(mod.71, mod.73, type='html', style='ajps', out="tab2.html")
 summary(mod.71)
 summary(mod.73)
 PseudoR2(mod.71)
+allEffects(mod.71)
 PseudoR2(mod.73)
 #obtaining probabilities for graph
 effagree_tab2 = as.data.frame(effect(c('agree4pt'), mod=mod.73))
@@ -165,5 +166,8 @@ for(i in 1:length(unique(d3$runhigher))) {
 
 stargazer(logit_model1,logit_model2,logit_model3,logit_model4, type="html", out="assumption.html")
 
-
-
+ohno <- polr(runhigher~extra4pt+ open4pt+agree4pt+ consc4pt+ stable4pt+ closevote+ tenure+ progamb_current+termlimits+ partisanelect+ tenure+ progamb_similar_1+ progamb_winlegis_1+gender + progamb_winlegis_1*agree4pt, data=d2)
+stargazer(ohno, type="html", out="ahh.html")
+summary(mod.fig3)
+stargazer(mod.fig3, type="text")
+levels(d2$office)

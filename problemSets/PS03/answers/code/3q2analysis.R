@@ -18,3 +18,4 @@ lambda
 
 #zeroinfl_mex <- zeroinfl(PAN.visits.06 ~ competitive.district + marginality.06 + PAN.governor.06, data=mexico, dist = "poisson")
 #summary(zeroinfl_mex)
+?polr
